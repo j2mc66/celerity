@@ -1,0 +1,58 @@
+server:
+  tomcat:
+    max-threads: 4
+  port: 8588
+  forward-headers-strategy: native
+eureka:
+  client:
+    healthcheck:
+        enabled: true
+    service-url:
+      defaultZone: http://localhost:8562/eureka
+  instance:
+    preferIpAddress: true
+    
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+#          filters:
+#            - name: Hystrix
+#              args:
+#                name: serviceId
+#                fallbackUri: forward:/fallback/message
+      forwarded:
+        enabled: true
+      x-forwarded:
+        enabled: true
+        forAppend: true
+        protoAppend: true
+        prefixAppend: true
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
+              - HEAD
+            allowed-headers:
+              - "*"
+            allow-credentials: true
+                    
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+    org.springframework.cloud.gateway: TRACE
+            
+              

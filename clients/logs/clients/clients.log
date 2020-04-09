@@ -1,0 +1,267 @@
+2020-04-04 22:25:02.313  INFO 24297 --- [main] c.e.celerity.clients.ClientsApplication  : The following profiles are active: dev
+2020-04-04 22:25:04.588  WARN 24297 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-04-04 22:25:04.816  INFO 24297 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b4055ac6-9409-3308-85ee-d06aeaadea8e
+2020-04-04 22:25:05.598  INFO 24297 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2020-04-04 22:25:05.617  INFO 24297 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-04 22:25:05.620  INFO 24297 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-04 22:25:05.870  INFO 24297 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-04 22:25:05.870  INFO 24297 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3508 ms
+2020-04-04 22:25:06.006  WARN 24297 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-04-04 22:25:06.007  INFO 24297 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-04 22:25:06.033  INFO 24297 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@3cdff901
+2020-04-04 22:25:06.518  WARN 24297 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'clientController': Unsatisfied dependency expressed through field 'userClient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.celerity.clients.integration.UserClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2020-04-04 22:25:06.523  INFO 24297 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-04-04 22:25:06.550  INFO 24297 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-04-04 22:25:06.780 ERROR 24297 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field userClient in com.example.celerity.clients.controller.ClientController required a bean of type 'com.example.celerity.clients.integration.UserClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.example.celerity.clients.integration.UserClient' in your configuration.
+
+2020-04-04 22:26:13.030  INFO 24401 --- [main] c.e.celerity.clients.ClientsApplication  : The following profiles are active: dev
+2020-04-04 22:26:14.270  WARN 24401 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-04-04 22:26:14.577  INFO 24401 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b4055ac6-9409-3308-85ee-d06aeaadea8e
+2020-04-04 22:26:15.209  INFO 24401 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2020-04-04 22:26:15.227  INFO 24401 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-04 22:26:15.227  INFO 24401 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-04 22:26:15.478  INFO 24401 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-04 22:26:15.478  INFO 24401 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2415 ms
+2020-04-04 22:26:15.607  WARN 24401 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-04-04 22:26:15.607  INFO 24401 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-04 22:26:15.633  INFO 24401 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@1ab14636
+2020-04-04 22:26:16.060  WARN 24401 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'clientController': Unsatisfied dependency expressed through field 'userClient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.celerity.clients.integration.UserClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2020-04-04 22:26:16.067  INFO 24401 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-04-04 22:26:16.097  INFO 24401 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-04-04 22:26:16.342 ERROR 24401 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field userClient in com.example.celerity.clients.controller.ClientController required a bean of type 'com.example.celerity.clients.integration.UserClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.example.celerity.clients.integration.UserClient' in your configuration.
+
+2020-04-04 22:28:14.510  INFO 24587 --- [main] c.e.celerity.clients.ClientsApplication  : The following profiles are active: dev
+2020-04-04 22:28:15.707  WARN 24587 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-04-04 22:28:15.732  WARN 24587 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2020-04-04 22:28:15.912  INFO 24587 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b9b25430-7fb1-3ad8-9011-a1faf291dccd
+2020-04-04 22:28:16.185  INFO 24587 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.example.celerity.clients.integration.UserClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-04 22:28:16.988  INFO 24587 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2020-04-04 22:28:17.007  INFO 24587 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-04 22:28:17.008  INFO 24587 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-04 22:28:17.137  INFO 24587 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-04 22:28:17.138  INFO 24587 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2579 ms
+2020-04-04 22:28:17.336  WARN 24587 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-04-04 22:28:17.337  INFO 24587 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-04 22:28:17.358  INFO 24587 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@49cb3881
+2020-04-04 22:28:18.520  INFO 24587 --- [main] o.s.b.a.e.web.ServletEndpointRegistrar   : Registered '/actuator/hystrix.stream' to hystrix.stream-actuator-endpoint
+2020-04-04 22:28:18.900  WARN 24587 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-04-04 22:28:18.900  INFO 24587 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-04 22:28:19.607  INFO 24587 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-04 22:28:20.253  WARN 24587 --- [main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-04-04 22:28:20.410  INFO 24587 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 23 endpoint(s) beneath base path '/actuator'
+2020-04-04 22:28:20.621  INFO 24587 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 45275 (http) with context path ''
+2020-04-04 22:28:20.622  INFO 24587 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 45275
+2020-04-04 22:28:20.633  INFO 24587 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-04-04 22:28:20.771  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-04-04 22:28:21.089  INFO 24587 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-04-04 22:28:21.089  INFO 24587 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-04-04 22:28:21.277  INFO 24587 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-04-04 22:28:21.277  INFO 24587 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-04-04 22:28:21.586  INFO 24587 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-04-04 22:28:21.611  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-04-04 22:28:21.611  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-04-04 22:28:21.612  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-04-04 22:28:21.612  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-04-04 22:28:21.612  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-04-04 22:28:21.613  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-04-04 22:28:21.613  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-04-04 22:28:21.866  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-04-04 22:28:21.871  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2020-04-04 22:28:21.878  INFO 24587 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-04-04 22:28:21.882  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1586057301882 with initial instances count: 1
+2020-04-04 22:28:21.886  INFO 24587 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CLIENTS with eureka with status UP
+2020-04-04 22:28:21.888  INFO 24587 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1586057301887, current=UP, previous=STARTING]
+2020-04-04 22:28:21.888  WARN 24587 --- [main] c.n.discovery.InstanceInfoReplicator     : Ignoring onDemand update due to rate limiter
+2020-04-04 22:28:21.895  INFO 24587 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLIENTS/clients:7d5eb8e7e5d48bde9cbc6f2fad08f9a3: registering service...
+2020-04-04 22:28:21.945  INFO 24587 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLIENTS/clients:7d5eb8e7e5d48bde9cbc6f2fad08f9a3 - registration status: 204
+2020-04-04 22:28:21.965  INFO 24587 --- [main] c.e.celerity.clients.ClientsApplication  : Started ClientsApplication in 9.317 seconds (JVM running for 10.274)
+2020-04-04 22:29:58.040  INFO 24587 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-04 22:29:58.041  INFO 24587 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-04 22:29:58.061  INFO 24587 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 20 ms
+2020-04-04 22:33:21.616  INFO 24587 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-04-04 22:35:29.618  INFO 24587 --- [http-nio-auto-1-exec-3] c.netflix.config.ChainedDynamicProperty  : Flipping property: registration.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2020-04-04 22:35:29.682  INFO 24587 --- [http-nio-auto-1-exec-3] c.n.u.concurrent.ShutdownEnabledTimer    : Shutdown hook installed for: NFLoadBalancer-PingTimer-registration
+2020-04-04 22:35:29.682  INFO 24587 --- [http-nio-auto-1-exec-3] c.netflix.loadbalancer.BaseLoadBalancer  : Client: registration instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=registration,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2020-04-04 22:35:29.697  INFO 24587 --- [http-nio-auto-1-exec-3] c.n.l.DynamicServerListLoadBalancer      : Using serverListUpdater PollingServerListUpdater
+2020-04-04 22:35:29.743  INFO 24587 --- [http-nio-auto-1-exec-3] c.netflix.config.ChainedDynamicProperty  : Flipping property: registration.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2020-04-04 22:35:29.746  INFO 24587 --- [http-nio-auto-1-exec-3] c.n.l.DynamicServerListLoadBalancer      : DynamicServerListLoadBalancer for client registration initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=registration,current list of Servers=[192.168.0.163:42913],Load balancer stats=Zone stats: {defaultzone=[Zone:defaultzone;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.0.163:42913;	Zone:defaultZone;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Wed Dec 31 19:00:00 COT 1969;	First connection made: Wed Dec 31 19:00:00 COT 1969;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServerList@6aea5aa4
+2020-04-04 22:35:30.145 ERROR 24587 --- [http-nio-auto-1-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is feign.codec.DecodeException: Type definition error: [simple type, class com.example.celerity.exception.ApiResponse]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.example.celerity.exception.ApiResponse` (no Creators, like default construct, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (PushbackInputStream); line: 1, column: 2]] with root cause
+
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.example.celerity.exception.ApiResponse` (no Creators, like default construct, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (PushbackInputStream); line: 1, column: 2]
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:67) ~[jackson-databind-2.10.3.jar:2.10.3]
+	at com.fasterxml.jackson.databind.DeserializationContext.reportBadDefinition(DeserializationContext.java:1592) ~[jackson-databind-2.10.3.jar:2.10.3]
+	at com.fasterxml.jackson.databind.DeserializationContext.handleMissingInstantiator(DeserializationContext.java:1058) ~[jackson-databind-2.10.3.jar:2.10.3]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1297) ~[jackson-databind-2.10.3.jar:2.10.3]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:326) ~[jackson-databind-2.10.3.jar:2.10.3]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:159) ~[jackson-databind-2.10.3.jar:2.10.3]
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4218) ~[jackson-databind-2.10.3.jar:2.10.3]
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3267) ~[jackson-databind-2.10.3.jar:2.10.3]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:239) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:227) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.client.HttpMessageConverterExtractor.extractData(HttpMessageConverterExtractor.java:104) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.cloud.openfeign.support.SpringDecoder.decode(SpringDecoder.java:59) ~[spring-cloud-openfeign-core-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.cloud.openfeign.support.ResponseEntityDecoder.decode(ResponseEntityDecoder.java:62) ~[spring-cloud-openfeign-core-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at feign.optionals.OptionalDecoder.decode(OptionalDecoder.java:36) ~[feign-core-10.7.4.jar:na]
+	at feign.SynchronousMethodHandler.decode(SynchronousMethodHandler.java:183) ~[feign-core-10.7.4.jar:na]
+	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:147) ~[feign-core-10.7.4.jar:na]
+	at feign.SynchronousMethodHandler.invoke(SynchronousMethodHandler.java:80) ~[feign-core-10.7.4.jar:na]
+	at feign.ReflectiveFeign$FeignInvocationHandler.invoke(ReflectiveFeign.java:100) ~[feign-core-10.7.4.jar:na]
+	at com.sun.proxy.$Proxy116.register(Unknown Source) ~[na:na]
+	at com.example.celerity.clients.controller.ClientController.register(ClientController.java:21) ~[main/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_242]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_242]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_242]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_242]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879) ~[spring-webmvc-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:109) ~[spring-boot-actuator-2.2.6.RELEASE.jar:2.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.5.RELEASE.jar:5.2.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:747) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1594) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_242]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_242]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_242]
+
+2020-04-04 22:35:30.701  INFO 24587 --- [PollingServerListUpdater-0] c.netflix.config.ChainedDynamicProperty  : Flipping property: registration.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2020-04-04 22:38:21.618  INFO 24587 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-04-04 22:38:47.603  INFO 25392 --- [main] c.e.celerity.clients.ClientsApplication  : The following profiles are active: dev
+2020-04-04 22:38:49.002  WARN 25392 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-04-04 22:38:49.030  WARN 25392 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2020-04-04 22:38:49.256  INFO 25392 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b9b25430-7fb1-3ad8-9011-a1faf291dccd
+2020-04-04 22:38:49.567  INFO 25392 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.example.celerity.clients.integration.UserClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-04 22:38:50.530  INFO 25392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2020-04-04 22:38:50.557  INFO 25392 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-04 22:38:50.560  INFO 25392 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-04 22:38:50.731  INFO 25392 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-04 22:38:50.732  INFO 25392 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3083 ms
+2020-04-04 22:38:50.897  WARN 25392 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-04-04 22:38:50.897  INFO 25392 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-04 22:38:50.928  INFO 25392 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6de7778f
+2020-04-04 22:38:51.472  INFO 25392 --- [main] o.s.b.a.e.web.ServletEndpointRegistrar   : Registered '/actuator/hystrix.stream' to hystrix.stream-actuator-endpoint
+2020-04-04 22:38:51.760  WARN 25392 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-04-04 22:38:51.761  INFO 25392 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-04-04 22:38:52.136  INFO 25392 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-04 22:38:52.644  WARN 25392 --- [main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-04-04 22:38:52.711  INFO 25392 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 23 endpoint(s) beneath base path '/actuator'
+2020-04-04 22:38:52.818  INFO 25392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38855 (http) with context path ''
+2020-04-04 22:38:52.819  INFO 25392 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 38855
+2020-04-04 22:38:52.830  INFO 25392 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-04-04 22:38:52.944  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-04-04 22:38:53.222  INFO 25392 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-04-04 22:38:53.223  INFO 25392 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-04-04 22:38:53.409  INFO 25392 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-04-04 22:38:53.409  INFO 25392 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-04-04 22:38:53.745  INFO 25392 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-04-04 22:38:53.778  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-04-04 22:38:53.779  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-04-04 22:38:53.779  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-04-04 22:38:53.779  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-04-04 22:38:53.779  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-04-04 22:38:53.779  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-04-04 22:38:53.779  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-04-04 22:38:54.114  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-04-04 22:38:54.118  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2020-04-04 22:38:54.123  INFO 25392 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-04-04 22:38:54.130  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1586057934129 with initial instances count: 3
+2020-04-04 22:38:54.135  INFO 25392 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CLIENTS with eureka with status UP
+2020-04-04 22:38:54.136  INFO 25392 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1586057934136, current=UP, previous=STARTING]
+2020-04-04 22:38:54.143  WARN 25392 --- [main] c.n.discovery.InstanceInfoReplicator     : Ignoring onDemand update due to rate limiter
+2020-04-04 22:38:54.151  INFO 25392 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLIENTS/clients:a2b5682a3a17194a59a46d4f5a60ca2d: registering service...
+2020-04-04 22:38:54.202  INFO 25392 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLIENTS/clients:a2b5682a3a17194a59a46d4f5a60ca2d - registration status: 204
+2020-04-04 22:38:54.376  INFO 25392 --- [main] c.e.celerity.clients.ClientsApplication  : Started ClientsApplication in 8.499 seconds (JVM running for 9.328)
+2020-04-04 22:39:30.577  INFO 25392 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-04 22:39:30.577  INFO 25392 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-04 22:39:30.600  INFO 25392 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+2020-04-04 22:39:36.552  INFO 25392 --- [http-nio-auto-1-exec-2] c.netflix.config.ChainedDynamicProperty  : Flipping property: registration.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2020-04-04 22:39:36.658  INFO 25392 --- [http-nio-auto-1-exec-2] c.n.u.concurrent.ShutdownEnabledTimer    : Shutdown hook installed for: NFLoadBalancer-PingTimer-registration
+2020-04-04 22:39:36.658  INFO 25392 --- [http-nio-auto-1-exec-2] c.netflix.loadbalancer.BaseLoadBalancer  : Client: registration instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=registration,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2020-04-04 22:39:36.679  INFO 25392 --- [http-nio-auto-1-exec-2] c.n.l.DynamicServerListLoadBalancer      : Using serverListUpdater PollingServerListUpdater
+2020-04-04 22:39:36.740  INFO 25392 --- [http-nio-auto-1-exec-2] c.netflix.config.ChainedDynamicProperty  : Flipping property: registration.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2020-04-04 22:39:36.742  INFO 25392 --- [http-nio-auto-1-exec-2] c.n.l.DynamicServerListLoadBalancer      : DynamicServerListLoadBalancer for client registration initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=registration,current list of Servers=[192.168.0.163:42913],Load balancer stats=Zone stats: {defaultzone=[Zone:defaultzone;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.0.163:42913;	Zone:defaultZone;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Wed Dec 31 19:00:00 COT 1969;	First connection made: Wed Dec 31 19:00:00 COT 1969;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServerList@7838c127
+2020-04-04 22:39:37.686  INFO 25392 --- [PollingServerListUpdater-0] c.netflix.config.ChainedDynamicProperty  : Flipping property: registration.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2020-04-04 22:43:53.782  INFO 25392 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-04-04 22:48:53.783  INFO 25392 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration

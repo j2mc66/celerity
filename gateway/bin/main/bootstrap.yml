@@ -1,0 +1,8 @@
+spring:
+   application:
+      name: gateway
+   cloud:
+      config:
+         uri: http://localhost:8889/mimutualcloudconfig
+         fail-fast: false
+         enabled: false

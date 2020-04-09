@@ -1,0 +1,16 @@
+pluginManagement {
+	repositories {
+		gradlePluginPortal()
+	}
+}
+
+rootProject.name = 'celerity'
+
+include ':commons'
+include ':exception-handler'
+include ':discovery'
+include ':gateway'
+include ':registration'
+include ':clients'
+include ':authentication'
+include ':utilities'

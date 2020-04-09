@@ -1,0 +1,18 @@
+server:
+  tomcat:
+    max-threads: 4
+  port: 8082
+  forward-headers-strategy: native
+
+eureka:
+   client:
+      enabled: false
+      
+logging:
+  file: logs/${spring.application.name}/${spring.application.name}.log
+  level:
+    org:
+      springframework:
+        cloud: INFO
+        web: INFO
+

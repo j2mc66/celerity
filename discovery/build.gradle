@@ -1,0 +1,5 @@
+group = 'com.example.celerity'
+
+dependencies {
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+}
