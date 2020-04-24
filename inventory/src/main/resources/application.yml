@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: local
+    
+management:
+   endpoints:
+      web:
+         exposure:
+            include: "*"
+   endpoint:
+      restart:
+         enabled: true
+      shutdown:
+         enabled: true

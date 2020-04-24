@@ -11,6 +11,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.web.csrf.CsrfFilter;
 
+import com.example.celerity.exception.ExceptionHandlerOauthFilter;
+
 @Configuration
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
@@ -24,9 +26,15 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		http.cors()
 		.and()
 			.csrf().disable()
-			.anonymous().disable()
 			.addFilterAfter(new ExceptionHandlerOauthFilter(), CsrfFilter.class)
-			.authorizeRequests()					
+			.authorizeRequests()
+				.antMatchers("/actuator/**").permitAll()
+				.antMatchers("/v2/api-docs").permitAll()
+				.antMatchers("/configuration/**").permitAll()
+				.antMatchers("/swagger-resources/**").permitAll()
+				.antMatchers("/swagger-ui.html").permitAll()
+				.antMatchers("/webjars/**").permitAll()
+				.antMatchers("/api-docs/**").permitAll()
 			.anyRequest().authenticated()			
 		.and()
 			.exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler())

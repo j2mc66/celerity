@@ -8,12 +8,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'	
 	
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon'
-//	implementation 'org.springframework.cloud:spring-cloud-starter-hystrix'
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
+	//implementation 'org.springframework.cloud:spring-boot-starter-security'
 
-	implementation 'org.springframework.cloud:spring-boot-starter-security'
-//	implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
-	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure'
+	//implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

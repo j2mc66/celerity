@@ -1,0 +1,35 @@
+server:
+  tomcat:
+    max-threads: 4
+  port: 0
+  forward-headers-strategy: native
+
+eureka:
+   client:
+      healthcheck:
+        enabled: true
+      service-url:
+         defaultZone: http://localhost:8562/eureka
+   instance:
+      preferIpAddress: true
+      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+            
+logging:
+  file: logs/${spring.application.name}/${spring.application.name}.log
+  level:
+    org.springframework.cloud: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    
+security:
+  oauth2:
+    client:
+      client-id: clientId
+      client-secret: user      
+    resource:
+      token-info-uri: http://${security.oauth2.resource.service-id}/oauth/check_token
+      id: product_api
+      service-id: AUTHENTICATION
+      
+      
+      
