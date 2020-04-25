@@ -31,5 +31,11 @@ out/
 ### VS Code ###
 .vscode/
 
+### QueryDsl ###
+generated/
+
 ### Logs ###
-logs/
+logs/**
+
+### Bin ###
+bin/
