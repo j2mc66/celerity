@@ -1,14 +1,15 @@
 package com.example.celerity.authentication.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.example.celerity.authentication.domain.User;
 import com.example.celerity.authentication.repository.UserRepository;
 import com.example.celerity.exception.ResponseStatusException;
+import com.querydsl.core.types.Predicate;
 
 @Service
 public class UserService {
@@ -20,8 +21,8 @@ public class UserService {
 		return userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 	}
 	
-	public List<User> findAll() {
-		return userRepository.findAll();
+	public Page<User> findAll(Predicate predicate, Pageable pageable) {
+		return userRepository.findAll(predicate, pageable);
 	}
 	
 	public User findById(Long id) {
