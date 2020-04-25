@@ -27,8 +27,7 @@ security:
       client-id: clientId
       client-secret: user      
     resource:
-      token-info-uri: http://${security.oauth2.resource.service-id}/oauth/check_token
+      token-info-uri: http://localhost:8588/oauth/check_token
       id: product_api
-      service-id: AUTHENTICATION
       
       

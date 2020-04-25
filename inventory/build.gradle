@@ -14,6 +14,9 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
 	
+	//implementation 'com.querydsl:querydsl-apt:4.1.4'
+	//implementation 'org.bitbucket.gt_tech:spring-data-querydsl-value-operators:4.0.0'
+	
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

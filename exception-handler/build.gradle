@@ -7,9 +7,9 @@ jar {
 }
 
 dependencies {
+	//implementation 'javax.servlet:servlet-api'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-core'
 	implementation 'com.netflix.hystrix:hystrix-core:1.5.18'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	implementation 'org.springframework:spring-orm'
