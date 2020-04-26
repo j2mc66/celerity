@@ -16,11 +16,13 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -39,6 +41,17 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Autowired
     UserDetailsService userDetailsService;
 	
+	/**
+     * We expose the JdbcClientDetailsService because it has extra methods that the Interface does not have. E.g.
+     * {@link org.springframework.security.oauth2.provider.client.JdbcClientDetailsService#listClientDetails()} which we need for the
+     * admin page.
+     * @return JdbcClientDetailsService
+     */
+    @Bean
+    public JdbcClientDetailsService clientDetailsService() {
+        return new JdbcClientDetailsService(oauthDataSource());
+    }
+	
 	@Bean
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource oauthDataSource() {
@@ -46,27 +59,43 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     }
 
     @Bean
-    public JdbcClientDetailsService clientDetailsService() {
-        return new JdbcClientDetailsService(oauthDataSource());
-    }
-
-    @Bean
     public TokenStore tokenStore() {
         return new JdbcTokenStore(oauthDataSource());
     }
 
+    /**
+     * Approval stores are used to manage the decisions (approvals) made by the users (accept or deny an app). 
+     * These decisions can be stored on a db (jdbc), in memory or a third which is the TokenApprovalStore. 
+     * In this one, the approvals are stored on the TokenStore itself. In your case, you would need this last one.
+     * @return ApprovalStore
+     */
     @Bean
     public ApprovalStore approvalStore() {
         return new JdbcApprovalStore(oauthDataSource());
     }
 
+    /**
+     * Implementation of authorization code services that stores the codes and authentication in a database.
+     * @return AuthorizationCodeServices
+     */
     @Bean
     public AuthorizationCodeServices authorizationCodeServices() {
         return new JdbcAuthorizationCodeServices(oauthDataSource());
     }
     
     @Bean
-    public JwtAccessTokenConverter defaultAccessTokenConverter() {
+    public DefaultTokenServices tokenServices(final TokenStore tokenStore,
+                                              final ClientDetailsService clientDetailsService) {
+        DefaultTokenServices tokenServices = new DefaultTokenServices();
+        tokenServices.setSupportRefreshToken(true);
+        tokenServices.setTokenStore(tokenStore);
+        tokenServices.setClientDetailsService(clientDetailsService);
+        tokenServices.setAuthenticationManager(this.authenticationManager);
+        return tokenServices;
+    }
+    
+    @Bean
+    public JwtAccessTokenConverter jwtAccessTokenConverter() {
       JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
       converter.setSigningKey("as466gf");
       return converter;
@@ -74,7 +103,19 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsService());
+    	 clients.withClientDetails(clientDetailsService());
+    }
+    
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    	endpoints	    	
+	    	.approvalStore(approvalStore())
+	    	.authenticationManager(authenticationManager)
+	    	.accessTokenConverter(jwtAccessTokenConverter())
+	    	.userDetailsService(userDetailsService)
+	    	.tokenStore(tokenStore())
+	    	.reuseRefreshTokens(false)
+	    	.authorizationCodeServices(authorizationCodeServices());
     }
 
     @Override
@@ -85,16 +126,4 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     		.checkTokenAccess("isAuthenticated()");
     }
 
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-    	endpoints        	
-	    	.tokenStore(tokenStore())
-	    	.approvalStore(approvalStore())
-	    	.authenticationManager(authenticationManager)
-	    	.accessTokenConverter(defaultAccessTokenConverter())
-	    	.userDetailsService(userDetailsService)
-	    	.reuseRefreshTokens(false)
-	    	.authorizationCodeServices(authorizationCodeServices());
-
-    }
 }

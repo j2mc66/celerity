@@ -12,25 +12,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableWebSecurity
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.cors()
+		.and()
+			.csrf().disable()
 	    	.authorizeRequests()
 	        .antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll()
-	        .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
-	        .antMatchers("/h2-console/**").permitAll()
-	        .antMatchers("/**").authenticated()                
-	        .and()
-	        .logout()                
-	        .and()
-	        .userDetailsService(userDetailsServiceBean());
-        
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
+	        .anyRequest().authenticated();
     }
     
     @Bean
@@ -46,14 +39,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Override
-    public UserDetailsService userDetailsServiceBean() throws Exception {
+    public UserDetailsService userDetailsService() {
         return new JdbcUserDetails();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-        	.userDetailsService(userDetailsServiceBean())
+        	.userDetailsService(userDetailsService())
         	.passwordEncoder(passwordEncoder());
     }
 

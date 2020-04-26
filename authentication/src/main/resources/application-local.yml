@@ -39,6 +39,15 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
+
+security:
+  oauth2:
+    client:
+      client-id: clientId
+      client-secret: user      
+    resource:
+      token-info-uri: http://localhost:8082/authentication/oauth/check_token
+      id: product_api
       
 
 
