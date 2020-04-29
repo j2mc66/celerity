@@ -1,9 +1,3 @@
-//pluginManagement {
-//	repositories {
-//		gradlePluginPortal()
-//	}
-//}
-
 rootProject.name = 'celerity'
 
 include ':commons'
@@ -14,3 +8,4 @@ include ':registration'
 include ':inventory'
 include ':authentication'
 include ':utilities'
+include ':domain'

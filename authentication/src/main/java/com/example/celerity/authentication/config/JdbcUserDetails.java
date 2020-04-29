@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.example.celerity.authentication.domain.User;
+import com.example.celerity.domain.User;
 import com.example.celerity.authentication.repository.UserRepository;
 
 public class JdbcUserDetails implements UserDetailsService{

@@ -2,6 +2,8 @@ package com.example.celerity.authentication.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.celerity.authentication.domain.User;
+import com.example.celerity.domain.User;
+import com.example.celerity.dto.UserDto;
 import com.example.celerity.authentication.service.UserService;
 import com.querydsl.core.types.Predicate;
 
@@ -25,28 +28,32 @@ public class UserController {
 	private UserService userService;
 	
 	@GetMapping("/user/me")
-    public User get(final Principal principal) {
-		return userService.findByUsername(principal.getName());
+    public UserDto get(final Principal principal) {
+		User user = userService.findByUsername(principal.getName());
+		return UserDto.convertToDto(user);
     }
 
 	@GetMapping("/user")
-	public Page<User> findAll(@QuerydslPredicate(root=User.class) Predicate predicate, Pageable pageable) {
-		return userService.findAll(predicate, pageable);
+	public Page<UserDto> findAll(@QuerydslPredicate(root=User.class) Predicate predicate, Pageable pageable) {
+		return userService.findAll(predicate, pageable).map(UserDto::convertToDto);
 	}
 	
 	@GetMapping("/user/{id}")
-	public User findById(@PathVariable Long id) {
-		return userService.findById(id);		
+	public UserDto findById(@PathVariable Long id) {
+		User user = userService.findById(id);
+		return UserDto.convertToDto(user);
 	}
 
 	@PostMapping("/user")
-	public User create(@RequestBody User user) {
-		return userService.create(user);
+	public UserDto create(@RequestBody @Valid User user) {
+		User userCreate =  userService.create(user);
+		return UserDto.convertToDto(userCreate);
 	}
 
 	@PutMapping("/user/{id}")
-	public User update(@RequestBody User user, @PathVariable Long id) {
-		return userService.update(user, id);
+	public UserDto update(@RequestBody @Valid User user, @PathVariable Long id) {
+		User userUpdate = userService.update(user, id);
+		return UserDto.convertToDto(userUpdate);
 	}
 
 	@DeleteMapping("/user/{id}")

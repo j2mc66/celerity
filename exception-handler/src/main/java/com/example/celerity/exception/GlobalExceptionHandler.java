@@ -9,27 +9,28 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.exception.JDBCConnectionException;
 import org.hibernate.exception.SQLGrammarException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.ResourceAccessException;
 
 import com.netflix.hystrix.exception.HystrixRuntimeException;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class GlobalExceptionHandler {
 	
 	private static final String BASE_DATOS_JDBC_CONNECTION_EXCEPTION_MENSAJE = "BaseDatos.jDBCConnectionExceptionMensaje";
@@ -45,7 +46,7 @@ public class GlobalExceptionHandler {
 	private MessageSource messageSource;
 	
 	/**
-	 * Metodo que permite tomar excepcion de argumento no valida
+	 * Metodo que permite tomar excepcion de argumentos no validos
 	 * 
 	 * @param e MethodArgumentNotValidException
 	 * @return @ResponseBody ErrorResponse
@@ -55,7 +56,8 @@ public class GlobalExceptionHandler {
 	public @ResponseBody ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException e,
 			HttpServletRequest request) {
 		
-		String mensaje = e.getBindingResult().getFieldErrors().stream().map(FieldError::getDefaultMessage)
+		String mensaje = e.getBindingResult().getFieldErrors().stream()
+				.map( error -> error.getField() + StringUtils.SPACE + error.getDefaultMessage())
 				.collect(Collectors.joining("|"));
 		
 		return ErrorResponse.builder()
@@ -65,7 +67,6 @@ public class GlobalExceptionHandler {
 				.path(request.getRequestURI())
 				.message(mensaje)
 				.build();
-
 	}
 
 	/**
@@ -88,7 +89,6 @@ public class GlobalExceptionHandler {
 				.path(request.getRequestURI())
 				.message(mensaje)
 				.build();
-
 	}
 
 	/**
@@ -126,7 +126,8 @@ public class GlobalExceptionHandler {
 
 		String mensaje = messageSource.getMessage(GENERAL_DATA_DUPLICADA, null, Locale.getDefault());
 
-		String traza = e.getMostSpecificCause().getMessage();
+		String description = e.getMostSpecificCause().getMessage() != null ? 
+				e.getMostSpecificCause().getMessage() : e.getMessage();
 
 		return ErrorResponse.builder()
 				.timestamp(String.valueOf(System.currentTimeMillis()))
@@ -134,7 +135,7 @@ public class GlobalExceptionHandler {
 				.error(HttpStatus.INTERNAL_SERVER_ERROR.name())
 				.path(request.getRequestURI())
 				.message(mensaje)
-				.description(traza)
+				.description(description)
 				.build();
 	}
 
@@ -150,7 +151,8 @@ public class GlobalExceptionHandler {
 		
 		String mensaje = messageSource.getMessage(BASE_DATOS_SQL_EXCEPTION_MENSAJE, null, Locale.getDefault());
 
-		String traza = e.getMostSpecificCause().getMessage();
+		String description = e.getMostSpecificCause().getMessage() != null ? 
+				e.getMostSpecificCause().getMessage() : e.getMessage();
 
 		return ErrorResponse.builder()
 				.timestamp(String.valueOf(System.currentTimeMillis()))
@@ -158,7 +160,7 @@ public class GlobalExceptionHandler {
 				.error(HttpStatus.INTERNAL_SERVER_ERROR.name())
 				.path(request.getRequestURI())
 				.message(mensaje)
-				.description(traza)
+				.description(description)
 				.build();
 	}
 	
@@ -175,15 +177,17 @@ public class GlobalExceptionHandler {
 		
 		String mensaje = messageSource.getMessage(BASE_DATOS_SQL_EXCEPTION_MENSAJE, null, Locale.getDefault());
 		
+		String description = e.getMostSpecificCause().getMessage() != null ? 
+				e.getMostSpecificCause().getMessage() : e.getMessage();
+				
 		return ErrorResponse.builder()
 				.timestamp(String.valueOf(System.currentTimeMillis()))
 				.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
 				.error(HttpStatus.INTERNAL_SERVER_ERROR.name())
 				.path(request.getRequestURI())
 				.message(mensaje)
-				.description(e.getCause().getMessage())
+				.description(description)
 				.build();
-
 	}
 	
 	/**
@@ -223,13 +227,15 @@ public class GlobalExceptionHandler {
 
 		String mensaje = messageSource.getMessage(BASE_DATOS_SQL_EXCEPTION_MENSAJE, null, Locale.getDefault());
 		
+		String description = e.getCause() != null ? e.getCause().getMessage() : e.getMessage();
+				
 		return ErrorResponse.builder()
 				.timestamp(String.valueOf(System.currentTimeMillis()))
 				.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
 				.error(HttpStatus.INTERNAL_SERVER_ERROR.name())
 				.path(request.getRequestURI())
 				.message(mensaje)
-				.description(null != e.getCause()? e.getCause().getMessage(): e.getMessage())
+				.description(description)
 				.build();
 	}
 		
@@ -247,7 +253,7 @@ public class GlobalExceptionHandler {
 
 		String mensaje = messageSource.getMessage(GENERAL_HTTP_STATUS_0_MENSAJE, null, Locale.getDefault());
 
-		String description = e.getCause().getMessage();
+		String description = e.getCause() != null ? e.getCause().getMessage() : e.getMessage();
 
 		return ErrorResponse.builder()
 				.timestamp(String.valueOf(System.currentTimeMillis()))
@@ -308,6 +314,20 @@ public class GlobalExceptionHandler {
 				.path(request.getRequestURI())
 				.message(mensaje)
 				.build();
+	}
+		
+	@ExceptionHandler(value = ResponseStatusException.class)
+	public ResponseEntity<ErrorResponse> handleException(ResponseStatusException exception, HttpServletRequest request) {
+		ErrorResponse errorResponse =  ErrorResponse.builder()
+				.timestamp(LocalDateTime.now().toString())
+				.status(exception.getStatus().value())
+				.error(exception.getStatus().name())
+				.path(request.getRequestURI())
+				.message(exception.getMessage())
+				.description(exception.getDescription())
+				.build();
+		
+		return new ResponseEntity<ErrorResponse>(errorResponse, exception.getStatus());
 	}
 
 	@ExceptionHandler(value = Exception.class)

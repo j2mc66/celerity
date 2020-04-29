@@ -6,8 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.example.celerity.authentication.domain.User;
 import com.example.celerity.authentication.repository.UserRepository;
+import com.example.celerity.domain.User;
 import com.example.celerity.exception.ResponseStatusException;
 import com.querydsl.core.types.Predicate;
 
@@ -18,7 +18,8 @@ public class UserService {
 	private UserRepository userRepository;
 
 	public User findByUsername(String username) {
-		return userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		return userRepository.findByUsername(username)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado", "Prueba descripcion"));
 	}
 	
 	public Page<User> findAll(Predicate predicate, Pageable pageable) {
@@ -26,12 +27,13 @@ public class UserService {
 	}
 	
 	public User findById(Long id) {
-		return userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		return userRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
 	}
 	
 	public User create(User user) {
 		if(null != user.getId() && userRepository.existsById(user.getId())) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
 		}
 		return userRepository.save(user);
 	}

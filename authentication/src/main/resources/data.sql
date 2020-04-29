@@ -2,12 +2,12 @@ INSERT INTO authority  VALUES(1,'ROLE_OAUTH_ADMIN');
 INSERT INTO authority VALUES(2,'ROLE_RESOURCE_ADMIN');
 INSERT INTO authority VALUES(3,'ROLE_PRODUCT_ADMIN');
 -- The encrypted password is `admin`
-INSERT INTO credentials (id, version, name, password, enabled) VALUES(1,'1','james','$2a$10$BurTWIy5NTF9GJJH4magz.9Bd4bBurWYG8tmXxeQh1vs7r/wnCFG2','1');
-INSERT INTO credentials (id, version, name, password, enabled) VALUES(2,'1','alvaro','$2a$10$BurTWIy5NTF9GJJH4magz.9Bd4bBurWYG8tmXxeQh1vs7r/wnCFG2','1');
-INSERT INTO credentials (id, version, name, password, enabled) VALUES(3,'1','cesar','$2a$10$BurTWIy5NTF9GJJH4magz.9Bd4bBurWYG8tmXxeQh1vs7r/wnCFG2','1');
-INSERT INTO credentials_authorities VALUES (1,1);
-INSERT INTO credentials_authorities VALUES (2,2);
-INSERT INTO credentials_authorities VALUES (3,3);
+INSERT INTO credentials (id, version, name, password, enabled) VALUES(10,'1','james','$2a$10$BurTWIy5NTF9GJJH4magz.9Bd4bBurWYG8tmXxeQh1vs7r/wnCFG2','1');
+INSERT INTO credentials (id, version, name, password, enabled) VALUES(11,'1','alvaro','$2a$10$BurTWIy5NTF9GJJH4magz.9Bd4bBurWYG8tmXxeQh1vs7r/wnCFG2','1');
+INSERT INTO credentials (id, version, name, password, enabled) VALUES(12,'1','cesar','$2a$10$BurTWIy5NTF9GJJH4magz.9Bd4bBurWYG8tmXxeQh1vs7r/wnCFG2','1');
+INSERT INTO credentials_authorities (credentials_id, authorities_id) VALUES (10,1);
+INSERT INTO credentials_authorities (credentials_id, authorities_id) VALUES (11,2);
+INSERT INTO credentials_authorities (credentials_id, authorities_id) VALUES (12,3);
 
 
 -- The encrypted client_secret it `user`

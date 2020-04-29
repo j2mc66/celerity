@@ -1,36 +1,10 @@
 group = 'com.example.celerity'
 
-ext {
-    queryDslVersion = '4.2.1'
-}
-
-compileJava {
-    options.compilerArgs << "-s"
-    options.compilerArgs << "$projectDir/src/generated/java"
-
-    doFirst {
-        // make sure that directory exists
-        file(new File(projectDir, "/src/generated/java")).mkdirs()
-    }
-}
-
-clean.doLast {
-    // clean-up directory when necessary
-    file(new File(projectDir, "/src/generated")).deleteDir()
-}
-
-sourceSets {
-    generated {
-        java {
-            srcDir "$projectDir/src/generated/java"
-        }
-    }
-}
-
 dependencies {
 	
-	compile project(':exception-handler')
-	compile project(':commons')
+	implementation project(':exception-handler')
+	implementation project(':commons')
+	implementation project(':domain')
 	
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -45,12 +19,8 @@ dependencies {
 	
 	runtimeOnly 'com.h2database:h2'
 	
-    compileOnly "com.querydsl:querydsl-jpa:${queryDslVersion}"
-    annotationProcessor("com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
-		
-	//needed because the query dsl annotation processor doesn't recognize javax.persistence.Entity
-    annotationProcessor 'org.springframework.boot:spring-boot-starter-data-jpa' 
-		
+    implementation 'com.querydsl:querydsl-jpa:4.2.2'
+    		
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

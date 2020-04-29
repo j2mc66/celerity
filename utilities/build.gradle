@@ -2,8 +2,8 @@ group = 'com.example.celerity'
 
 dependencies {
 	
-	compile project(':exception-handler')
-	compile project(':commons')
+	implementation project(':exception-handler')
+	implementation project(':commons')
 	
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
