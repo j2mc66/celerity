@@ -3,7 +3,7 @@ server:
     max-threads: 4
   port: 8562
 
-eureka:  
+eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
@@ -13,8 +13,6 @@ eureka:
 logging:
   file: logs/${spring.application.name}/${spring.application.name}.log
   level:
-    org:
-      springframework:
-        cloud: INFO
-        web: INFO
+    org.springframework.cloud: INFO
+    org.springframework.web: INFO
 

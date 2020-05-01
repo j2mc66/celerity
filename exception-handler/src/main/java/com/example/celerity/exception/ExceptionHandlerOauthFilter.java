@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpHeaders;
@@ -35,12 +34,28 @@ public class ExceptionHandlerOauthFilter extends RequestContextFilter {
 			filterChain.doFilter(request, response);
 		} catch (HttpClientErrorException | HttpServerErrorException  e) {			
 			LOGGER.error(e);
-			response.setStatus(e.getStatusCode().value());
-			response.getWriter().write(e.getResponseBodyAsString());
+			if(HttpStatus.NOT_FOUND.value() ==  e.getStatusCode().value()) {
+				ErrorResponse errorResponse = ErrorResponse.builder()
+						.timestamp(LocalDateTime.now().toString())
+						.status(HttpStatus.NOT_FOUND.value())
+						.error(HttpStatus.NOT_FOUND.name())
+						.path(request.getRequestURI())
+						.message("El Servicio de autenticacion no se encuentra disponible")
+						.build();
+				String errorResponseString = mapper.writeValueAsString(errorResponse);
+				response.getWriter().write(errorResponseString);
+				response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			} else {
+				response.getWriter().write(e.getResponseBodyAsString());
+				response.setStatus(response.getStatus());
+			}
+			
+							
 			response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+			
 		} catch (ConnectException | ResourceAccessException ex) {
 			
-			ErrorResponse apiResponse = ErrorResponse.builder()
+			ErrorResponse errorResponse = ErrorResponse.builder()
 					.timestamp(LocalDateTime.now().toString())
 					.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
 					.error(HttpStatus.INTERNAL_SERVER_ERROR.name())
@@ -49,12 +64,12 @@ public class ExceptionHandlerOauthFilter extends RequestContextFilter {
 					.build();
 			
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-			String apiResponseString = mapper.writeValueAsString(apiResponse);
-			response.getWriter().write(apiResponseString);
+			String errorResponseString = mapper.writeValueAsString(errorResponse);
+			response.getWriter().write(errorResponseString);
 			response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
 		} catch (Exception ex1) {
 			LOGGER.error(ex1);
-			ErrorResponse apiResponse = ErrorResponse.builder()
+			ErrorResponse errorResponse = ErrorResponse.builder()
 					.timestamp(LocalDateTime.now().toString())
 					.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
 					.error(HttpStatus.INTERNAL_SERVER_ERROR.name())
@@ -63,8 +78,8 @@ public class ExceptionHandlerOauthFilter extends RequestContextFilter {
 					.build();
 			
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-			String apiResponseString = mapper.writeValueAsString(apiResponse);
-			response.getWriter().write(apiResponseString);
+			String errorResponseString = mapper.writeValueAsString(errorResponse);
+			response.getWriter().write(errorResponseString);
 			response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
 		}
 	}
