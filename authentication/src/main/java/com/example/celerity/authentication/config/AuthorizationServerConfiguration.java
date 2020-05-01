@@ -4,8 +4,6 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -41,6 +39,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Autowired
     UserDetailsService userDetailsService;
 	
+	@Autowired
+	private DataSource dataSource;
+	
 	/**
      * We expose the JdbcClientDetailsService because it has extra methods that the Interface does not have. E.g.
      * {@link org.springframework.security.oauth2.provider.client.JdbcClientDetailsService#listClientDetails()} which we need for the
@@ -49,18 +50,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Bean
     public JdbcClientDetailsService clientDetailsService() {
-        return new JdbcClientDetailsService(oauthDataSource());
+        return new JdbcClientDetailsService(dataSource);
     }
 	
-	@Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource oauthDataSource() {
-        return DataSourceBuilder.create().build();
-    }
-
     @Bean
     public TokenStore tokenStore() {
-        return new JdbcTokenStore(oauthDataSource());
+        return new JdbcTokenStore(dataSource);
     }
 
     /**
@@ -71,7 +66,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Bean
     public ApprovalStore approvalStore() {
-        return new JdbcApprovalStore(oauthDataSource());
+        return new JdbcApprovalStore(dataSource);
     }
 
     /**
@@ -80,7 +75,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Bean
     public AuthorizationCodeServices authorizationCodeServices() {
-        return new JdbcAuthorizationCodeServices(oauthDataSource());
+        return new JdbcAuthorizationCodeServices(dataSource);
     }
     
     @Bean

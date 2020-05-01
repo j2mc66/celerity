@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -22,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name ="credentials")
+@Table(name ="user")
 @EqualsAndHashCode(of = {"id"})
 public class User implements Serializable {
 
@@ -36,14 +38,17 @@ public class User implements Serializable {
     private Integer version;
 
     @NotEmpty
-    //@Min(value = 5)
-    //@Max(value = 50)
-    @Column(name="NAME")
+    @Column(name="username")
     private String username;
 
     @NotEmpty    
     private String password;
 
+    @JoinTable(
+            name = "users_authorities",
+            joinColumns = @JoinColumn(name = "user_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="authority_id", nullable = false)
+        )
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Authority> authorities;
 

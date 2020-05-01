@@ -42,18 +42,18 @@ create table if not exists authority (
   primary key (id)
 );
 
-create table if not exists credentials (
+create table if not exists user (
   id  integer,
   enabled boolean not null,
-  name varchar(255) not null,
+  username varchar(255) not null,
   password varchar(255) not null,
   version integer,
   primary key (id)
 );
 
-create table if not exists credentials_authorities (
-  credentials_id bigint not null,
-  authorities_id bigint not null
+create table if not exists users_authorities (
+  user_id bigint not null,
+  authority_id bigint not null
 );
 
 create table if not exists oauth_code (
