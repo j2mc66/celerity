@@ -14,9 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Created by ahmed on 21.5.18.
- */
+
 @Getter
 @Setter
 @Entity

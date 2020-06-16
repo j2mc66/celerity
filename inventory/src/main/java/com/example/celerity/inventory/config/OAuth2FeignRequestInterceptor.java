@@ -3,13 +3,11 @@ package com.example.celerity.inventory.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
-import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
-@Component
 public class OAuth2FeignRequestInterceptor implements RequestInterceptor {
 
 	/**

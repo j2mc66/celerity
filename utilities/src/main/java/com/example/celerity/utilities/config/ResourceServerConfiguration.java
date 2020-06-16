@@ -2,6 +2,7 @@ package com.example.celerity.utilities.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -35,6 +36,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 				.antMatchers("/swagger-ui.html").permitAll()
 				.antMatchers("/webjars/**").permitAll()
 				.antMatchers("/api-docs/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/notification/**").permitAll()
 			.anyRequest().authenticated()			
 		.and()
 			.exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler())
