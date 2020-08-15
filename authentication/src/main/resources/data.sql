@@ -13,7 +13,7 @@ INSERT INTO users_authorities (user_id, authority_id) VALUES (12,3);
 
 -- The encrypted client_secret it `user`
 INSERT INTO oauth_client_details (client_id, resource_ids, client_secret, scope, authorized_grant_types, authorities, access_token_validity, refresh_token_validity, additional_information, autoapprove)
-VALUES ('clientId', 'product_api', '$2a$10$BurTWIy5NTF9GJJH4magz.9Bd4bBurWYG8tmXxeQh1vs7r/wnCFG2', 'read,write', 'password,client_credentials,refresh_token', 'ROLE_PRODUCT_ADMIN', 300, 0, NULL, 'true');
+VALUES ('clientId', NULL, '$2a$10$BurTWIy5NTF9GJJH4magz.9Bd4bBurWYG8tmXxeQh1vs7r/wnCFG2', 'read,write', 'password,client_credentials,refresh_token', 'ROLE_PRODUCT_ADMIN', 3600, 0, NULL, 'true');
 
 -- The encrypted client_secret it `user`
 INSERT INTO oauth_client_details (client_id, resource_ids, client_secret, scope, authorized_grant_types, authorities, access_token_validity, refresh_token_validity, additional_information, autoapprove)

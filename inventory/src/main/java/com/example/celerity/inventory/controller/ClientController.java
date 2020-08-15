@@ -1,12 +1,12 @@
 package com.example.celerity.inventory.controller;
 
-import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.celerity.dto.CustomPage;
+import com.example.celerity.dto.UserDto;
 import com.example.celerity.inventory.integration.UserClient;
 
 @RestController
@@ -17,10 +17,13 @@ public class ClientController {
 	private UserClient userClient;
 	
 	@GetMapping
-	public LocalDateTime register() {
+	public CustomPage<UserDto> register() {
 		
-		LocalDateTime apiResponse = userClient.register();
+		for(int i=0;i<100;i++) {
+			userClient.get();
+		}
 		
-		return apiResponse;
+		return userClient.get();
+		
 	}
 }

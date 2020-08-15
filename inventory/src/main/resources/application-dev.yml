@@ -12,7 +12,14 @@ eureka:
          defaultZone: http://localhost:8562/eureka
    instance:
       preferIpAddress: true
-      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      instance-id: ${spring.application.name}-${random.uuid}
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 160000000
+        readTimeout: 160000000
             
 logging:
   file: logs/${spring.application.name}/${spring.application.name}.log
@@ -28,6 +35,4 @@ security:
       client-secret: user      
     resource:
       token-info-uri: http://localhost:8588/authentication/oauth/check_token
-      id: product_api      
-      
       

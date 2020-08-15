@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.celerity.authentication.service.UserService;
 import com.example.celerity.domain.User;
 import com.example.celerity.dto.UserDto;
-import com.example.celerity.authentication.service.UserService;
 import com.querydsl.core.types.Predicate;
 
 @RestController
@@ -35,6 +35,11 @@ public class UserController {
 
 	@GetMapping("/user")
 	public Page<UserDto> findAll(@QuerydslPredicate(root=User.class) Predicate predicate, Pageable pageable) {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return userService.findAll(predicate, pageable).map(UserDto::convertToDto);
 	}
 	
