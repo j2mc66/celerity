@@ -1,4 +1,4 @@
-package com.example.celerity.discovery;
+package com.example.celerity.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,10 +11,10 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 @EnableEurekaServer
 @EnableDiscoveryClient
 @EnableAdminServer
-public class DiscoveryApplication {
+public class EurekaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DiscoveryApplication.class, args);
+		SpringApplication.run(EurekaApplication.class, args);
 	}
 
 }

@@ -2,7 +2,7 @@ rootProject.name = 'celerity'
 
 include ':commons'
 include ':exception-handler'
-include ':discovery'
+include ':eureka'
 include ':gateway'
 include ':registration'
 include ':inventory'
