@@ -30,5 +30,6 @@ security:
       client-secret: user
     resource:
       token-info-uri: http://localhost:8082/authentication/oauth/check_token
+      id: product_api
       
       
